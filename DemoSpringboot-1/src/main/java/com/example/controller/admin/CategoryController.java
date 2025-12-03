@@ -26,7 +26,7 @@ public class CategoryController {
 	@GetMapping
 	public String list(Model m, @PageableDefault(size = 10, sort = "categoryName") Pageable p) {
 		m.addAttribute("page", categoryService.findAll(p));
-		return "admin/category-list";
+		return "category/list";
 	}
 
 	@GetMapping("/new")

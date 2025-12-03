@@ -1,13 +1,15 @@
 <div th:fragment="headerFrag" class="header">
-  <div class="header-left">
-    <img th:src="@{/images/my-photo.jpg}" alt="Sinh viên" class="avatar">
-    <h1>Hệ thống quản lý Video 🎬</h1>
-  </div>
+  <div class="header-container">
+    <div class="header-left">
+      <img th:src="@{/images/my-photo.jpg}" alt="Student" class="avatar">
+      <h1>Video Management System 🎬</h1>
+    </div>
 
-  <nav class="header-nav">
-    <a th:href="@{/}">Trang chủ</a>
-    <a th:href="@{/users}">Người dùng</a>
-    <a th:href="@{/categories}">Danh mục</a>
-    <a th:href="@{/videos}">Video</a>
-  </nav>
+    <nav class="header-nav">
+      <a th:href="@{/}">Home</a>
+      <a th:href="@{/users}">Users</a>
+      <a th:href="@{/admin/categories}">Categories</a>
+      <a th:href="@{/admin/videos}">Videos</a>
+    </nav>
+  </div>
 </div>

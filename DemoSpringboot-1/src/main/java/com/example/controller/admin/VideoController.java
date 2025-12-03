@@ -27,13 +27,13 @@ public class VideoController {
 	@GetMapping
 	public String list(Model model) {
 		model.addAttribute("videos", videoService.findAll());
-		return "admin/video-list";
+		return "video/list";
 	}
 
 	@GetMapping("/new")
 	public String createForm(Model model) {
 		model.addAttribute("video", new Video());
-		return "admin/video-form";
+		return "video/form";
 	}
 
 	@PostMapping
@@ -51,7 +51,7 @@ public class VideoController {
 			// xử lý nếu không tìm thấy video
 			return "redirect:/admin/videos";
 		}
-		return "admin/video-form";
+		return "video/edit";
 	}
 
 	@PostMapping("/{id}/delete")
