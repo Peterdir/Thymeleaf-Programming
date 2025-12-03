@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
 <div th:fragment="headerFrag" class="header">
-  <div class="header-top">
-    <img th:src="@{/images/my-photo.jpg}" alt="Ảnh sinh viên" class="avatar">
-    <h2>Hệ thống quản lý Video</h2>
+  <div class="header-left">
+    <img th:src="@{/images/my-photo.jpg}" alt="Sinh viên" class="avatar">
+    <h1>Hệ thống quản lý Video 🎬</h1>
   </div>
-  <nav>
-    <a th:href="@{/}">Trang chủ</a> |
-    <a th:href="@{/users}">Người dùng</a> |
-    <a th:href="@{/categories}">Danh mục</a> |
+
+  <nav class="header-nav">
+    <a th:href="@{/}">Trang chủ</a>
+    <a th:href="@{/users}">Người dùng</a>
+    <a th:href="@{/categories}">Danh mục</a>
     <a th:href="@{/videos}">Video</a>
   </nav>
-  <hr/>
 </div>
-</body>
-</html>
