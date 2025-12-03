@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<body>
+<section layout:fragment="content">
+  <h3>Danh sách danh mục</h3>
+
+  <form method="get" th:action="@{/categories}">
+    <input type="text" name="q" th:value="${q}" placeholder="Tìm theo tên...">
+    <button type="submit">Tìm kiếm</button>
+    <a th:href="@{/categories/create}">+ Thêm mới</a>
+  </form>
+
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Tên</th><th>Người tạo</th><th>Thao tác</th></tr>
+    </thead>
+    <tbody>
+      <tr th:each="c : ${page.content}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.name}"></td>
+        <td th:text="${c.user != null ? c.user.username : '—'}"></td>
+        <td>
+          <a th:href="@{'/categories/edit/' + ${c.id}}">Sửa</a>
+          <form th:action="@{'/categories/delete/' + ${c.id}}" method="post" style="display:inline">
+            <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Phân trang -->
+  <div class="pagination">
+    <span th:text="'Trang ' + (${page.number + 1}) + ' / ' + ${page.totalPages}"></span>
+    <div>
+      <a th:if="${!page.first}" th:href="@{|/categories?page=${page.number - 1}&q=${q}|}">« Trước</a>
+      <a th:if="${!page.last}" th:href="@{|/categories?page=${page.number + 1}&q=${q}|}">Sau »</a>
+    </div>
+  </div>
+
+</section>
+</body>
+</html>

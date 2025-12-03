@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<body>
+<section layout:fragment="content" th:object="${category}">
+  <h3 th:text="${#ids.seq(category.id) ? 'Sửa danh mục' : 'Thêm danh mục mới'}"></h3>
+
+  <form th:action="@{/categories/save}" method="post" th:object="${category}">
+    <input type="hidden" th:field="*{id}" />
+    <label>Tên danh mục:</label>
+    <input type="text" th:field="*{name}" />
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+
+    <label>Người dùng:</label>
+    <select th:field="*{user}">
+      <option th:each="u : ${users}" th:value="${u}" th:text="${u.username}"></option>
+    </select>
+
+    <button type="submit">Lưu</button>
+    <a th:href="@{/categories}">Hủy</a>
+  </form>
+</section>
+</body>
+</html>

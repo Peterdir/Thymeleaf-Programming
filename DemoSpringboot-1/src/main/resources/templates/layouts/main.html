@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title} ?: 'Trang quản lý video'"></title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="fragments/header :: headerFrag"></header>
+
+<main layout:fragment="content"></main>
+
+<footer th:replace="fragments/footer :: footerFrag"></footer>
+</body>
+</html>
